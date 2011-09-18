@@ -78,3 +78,46 @@ fi
 alias nogit="disable_git_prompt_info"
 
 PATH=~/bin/:~/node_modules/.bin/:$PATH
+
+################################################################################
+# Custom PATH configuration
+################################################################################
+
+export PATH=$PATH:~/bin:~/android-extra/scripts:~/scripts:~/tools/arm-2009q3/bin:~/src/android/prebuilt/linux-x86/toolchain/arm-eabi-4.3.1/bin:~/src/kvm-arm-encoder:/home/christoffer/tools/cil-1.3.7/bin:/home/christoffer/tools/zchaff:~/x-tools/arm-unknown-eabi/bin:/home/christoffer/TA/android-sdk-os.f2011/tools
+
+
+################################################################################
+# Git settings
+################################################################################
+export GIT_EDITOR=/usr/bin/vim
+export GIT_AUTHOR_NAME="Christoffer Dall"
+export GIT_AUTHOR_EMAIL="cdall@cs.columbia.edu"
+export GIT_COMMITTER_NAME="Christoffer Dall"
+export GIT_COMMITTER_EMAIL="cdall@cs.columbia.edu"
+
+################################################################################
+# Linux compilation settings
+################################################################################
+export ARCH=arm
+#export CROSS_COMPILE=arm-none-linux-gnueabi-
+export CROSS_COMPILE=arm-unknown-eabi-
+export MENUCONFIG_COLOR=blackbg
+
+################################################################################
+# Android compilation settings
+################################################################################
+export ANDROID_PRODUCT_OUT=~/src/android-cont/android/out/target/product/generic
+export ANDROID_IMAGES=~/images/android-cont
+export JAVA_HOME=~/install/jdk1.6.0_23
+export ANROID_JAVA_HOME=$JAVA_HOME
+
+
+################################################################################
+# ARM FAST Model Settings
+################################################################################
+#export MAXCORE_HOME=~/ARM/FastModelTools_5.2
+#export PATH=$PATH:~/ARM/FastModelTools_6.0/bin:~/ARM/FLEXlm
+#. ~/ARM/FastModelTools_6.0/source_all.sh
+#export ARMLMD_LICENSE_FILE=~/ARM/Cortex_A15_Trial/sw/A15_Trial/license.dat
+#. /home/christoffer/ARM/FastModelTools_6.0/ModelDebugger_5.2/etc/setup.sh
+#. /home/christoffer/ARM/FastModelPortfolio_5.2/etc/setup.sh
