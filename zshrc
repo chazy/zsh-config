@@ -21,7 +21,8 @@ export DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github git-flow cap gem lol zsh-syntax-highlighting)
+# plugins=(git github git-flow cap gem lol zsh-syntax-highlighting)
+plugins=(cap gem lol zsh-syntax-highlighting)
 
 source /etc/profile
 source $ZSH/oh-my-zsh.sh
@@ -77,15 +78,12 @@ fi
 
 alias nogit="disable_git_prompt_info; compdef -d git"
 alias nog="nogit"
+nogit
 
-PATH=~/bin/:~/node_modules/.bin/:$PATH
-
-################################################################################
-# Custom PATH configuration
-################################################################################
-
-export PATH=$PATH:~/bin:~/android-extra/scripts:~/scripts:~/tools/arm-2009q3/bin:~/src/android/prebuilt/linux-x86/toolchain/arm-eabi-4.3.1/bin:~/src/kvm-arm-encoder:/home/christoffer/tools/cil-1.3.7/bin:/home/christoffer/tools/zchaff:~/x-tools/arm-unknown-eabi/bin:/home/christoffer/TA/android-sdk-os.f2011/tools
-
+PATH=~/bin:~/tools/arm-2010.09/bin:~/TA/android-sdk-os.f2011/tools:~/bin/:~/node_modules/.bin/:$PATH:/home/christoffer/x-tools/arm-unknown-eabi/bin
+export PATH=$PATH:/opt/local/bin:/usr/texbin
+export PATH=$PATH:~/bin:~/scripts
+export PATH=$PATH:~/src/android-cont/android/prebuilt/darwin-x86/toolchain/arm-eabi-4.4.0/bin/
 
 ################################################################################
 # Git settings
@@ -100,8 +98,7 @@ export GIT_COMMITTER_EMAIL="cdall@cs.columbia.edu"
 # Linux compilation settings
 ################################################################################
 export ARCH=arm
-#export CROSS_COMPILE=arm-none-linux-gnueabi-
-export CROSS_COMPILE=arm-unknown-eabi-
+export CROSS_COMPILE=arm-none-linux-gnueabi-
 export MENUCONFIG_COLOR=blackbg
 
 ################################################################################
