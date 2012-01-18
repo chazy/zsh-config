@@ -128,4 +128,24 @@ function poser-droid() {
 	popd
 }
 
+################################################################################
+# Directory-based environment config settings
+################################################################################
+
+function source_dir() {
+	envdir=$1
+	re_env_ignore="^\."
+	if [ -d "$envdir" ]; then
+		_T=$(ls "$envdir")
+		if [ ! -z "$_T" ]; then
+			for d in $(ls -1 "$envdir"); do
+				if [[ "$d" =~ $re_env_ignore ]]; then
+					echo "ignoring env setup file '$d'" > /dev/null
+				else
+					source "$envdir/$d"
+				fi
+			done
+		fi
+	fi
+}
 source_dir "$ZSH/env.d"
