@@ -27,6 +27,7 @@ source /etc/profile
 source $ZSH/oh-my-zsh.sh
 
 unsetopt nomatch
+unsetopt PUSHD_IGNORE_DUPS
 
 # Customize to your needs...
 LS_COLORS='no=00;32:fi=00:di=00;34:ln=01;36:pi=04;33:so=01;35:bd=33;04:cd=33;04:or=31;01:ex=00;32:*.rtf=00;33:*.txt=00;33:*.html=00;33:*.doc=00;33:*.pdf=00;33:*.ps=00;33:*.sit=00;31:*.hqx=00;31:*.bin=00;31:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.deb=00;31:*.dmg=00;36:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.ppm=00;35:*.tga=00;35:*.xbm=00;35:*.xpm=00;35:*.tif=00;35:*.mpg=00;37:*.avi=00;37:*.gl=00;37:*.dl=00;37:*.mov=00;37:*.mp3=00;35:'
@@ -110,3 +111,21 @@ export ANDROID_KERNEL_DIR=~/src/android-cont/kernel/cm
 export ANDROID_PRODUCT_OUT=~/src/android-cont/android/out/target/product/generic
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
+################################################################################
+# Poser specific settings
+################################################################################
+mountSource() { hdiutil attach -quiet -mountpoint ~/src ~/SourceCode.sparsebundle; }
+
+export PATH=$PATH:~/bin
+export COLUMBIA_POSER_ROOT=/Users/christoffer/src/poser
+function poser-droid() {
+	export ANDROID_ROOT=$COLUMBIA_POSER_ROOT
+	export ANDROID_IMGS=$COLUMBIA_POSER_ROOT/imgs
+	export ANDROID_KERNEL_DIR=$COLUMBIA_POSER_ROOT/kernel
+	pushd $ANDROID_ROOT
+	source ./source-me.sh $@
+	popd
+}
+
+source_dir "$ZSH/env.d"
