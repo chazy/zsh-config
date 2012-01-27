@@ -99,17 +99,6 @@ export ARCH=arm
 export CROSS_COMPILE=arm-eabi-
 export MENUCONFIG_COLOR=blackbg
 
-################################################################################
-# Android compilation settings
-################################################################################
-export ANDROID_ROOT=~/src/android-cont/android
-export ANDROID_HOST=darwin-x86
-export ANDROID_IMGS=~/images/android-cont
-export ANDROID_DFLT_IMGDIR=generic/eng/gingerbread-containers
-export ANDROID_DFLT_PRODUCT=generic
-export ANDROID_KERNEL_DIR=~/src/android-cont/kernel/cm
-export ANDROID_PRODUCT_OUT=~/src/android-cont/android/out/target/product/generic
-
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 ################################################################################
