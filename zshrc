@@ -27,6 +27,7 @@ source /etc/profile
 source $ZSH/oh-my-zsh.sh
 
 unsetopt nomatch
+unsetopt PUSHD_IGNORE_DUPS
 
 # Customize to your needs...
 LS_COLORS='no=00;32:fi=00:di=00;34:ln=01;36:pi=04;33:so=01;35:bd=33;04:cd=33;04:or=31;01:ex=00;32:*.rtf=00;33:*.txt=00;33:*.html=00;33:*.doc=00;33:*.pdf=00;33:*.ps=00;33:*.sit=00;31:*.hqx=00;31:*.bin=00;31:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.deb=00;31:*.dmg=00;36:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.ppm=00;35:*.tga=00;35:*.xbm=00;35:*.xpm=00;35:*.tif=00;35:*.mpg=00;37:*.avi=00;37:*.gl=00;37:*.dl=00;37:*.mov=00;37:*.mp3=00;35:'
@@ -78,3 +79,73 @@ fi
 alias nogit="disable_git_prompt_info"
 
 PATH=~/bin/:~/node_modules/.bin/:$PATH
+export PATH=$PATH:/opt/local/bin:/usr/texbin
+export PATH=$PATH:~/bin:~/scripts
+export PATH=$PATH:~/src/android-cont/android/prebuilt/darwin-x86/toolchain/arm-eabi-4.4.0/bin/
+#
+################################################################################
+# Git settings
+################################################################################
+export GIT_EDITOR=/usr/bin/vim
+export GIT_AUTHOR_NAME="Christoffer Dall"
+export GIT_AUTHOR_EMAIL="cdall@cs.columbia.edu"
+export GIT_COMMITTER_NAME="Christoffer Dall"
+export GIT_COMMITTER_EMAIL="cdall@cs.columbia.edu"
+
+################################################################################
+# Linux compilation settings 
+################################################################################
+export ARCH=arm
+export CROSS_COMPILE=arm-eabi-
+export MENUCONFIG_COLOR=blackbg
+
+################################################################################
+# Android compilation settings
+################################################################################
+export ANDROID_ROOT=~/src/android-cont/android
+export ANDROID_HOST=darwin-x86
+export ANDROID_IMGS=~/images/android-cont
+export ANDROID_DFLT_IMGDIR=generic/eng/gingerbread-containers
+export ANDROID_DFLT_PRODUCT=generic
+export ANDROID_KERNEL_DIR=~/src/android-cont/kernel/cm
+export ANDROID_PRODUCT_OUT=~/src/android-cont/android/out/target/product/generic
+
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
+################################################################################
+# Poser specific settings
+################################################################################
+mountSource() { hdiutil attach -quiet -mountpoint ~/src ~/SourceCode.sparsebundle; }
+
+export PATH=$PATH:~/bin
+export COLUMBIA_POSER_ROOT=/Users/christoffer/src/poser
+function poser-droid() {
+	export ANDROID_ROOT=$COLUMBIA_POSER_ROOT
+	export ANDROID_IMGS=$COLUMBIA_POSER_ROOT/imgs
+	export ANDROID_KERNEL_DIR=$COLUMBIA_POSER_ROOT/kernel
+	pushd $ANDROID_ROOT
+	source ./source-me.sh $@
+	popd
+}
+
+################################################################################
+# Directory-based environment config settings
+################################################################################
+
+function source_dir() {
+	envdir=$1
+	re_env_ignore="^\."
+	if [ -d "$envdir" ]; then
+		_T=$(ls "$envdir")
+		if [ ! -z "$_T" ]; then
+			for d in $(ls -1 "$envdir"); do
+				if [[ "$d" =~ $re_env_ignore ]]; then
+					echo "ignoring env setup file '$d'" > /dev/null
+				else
+					source "$envdir/$d"
+				fi
+			done
+		fi
+	fi
+}
+source_dir "$ZSH/env.d"
