@@ -8,7 +8,7 @@ Installation
 =============
 
     cd ~
-    git clone git://github.com/nviennot/zsh-config.git .oh-my-zsh
+    git clone git://github.com/chazy/zsh-config.git .oh-my-zsh
     ln -s .oh-my-zsh/zshrc .zshrc
     cd .oh-my-zsh
     git submodule init

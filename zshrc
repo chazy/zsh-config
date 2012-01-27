@@ -82,7 +82,7 @@ PATH=~/bin/:~/node_modules/.bin/:$PATH
 export PATH=$PATH:/opt/local/bin:/usr/texbin
 export PATH=$PATH:~/bin:~/scripts
 export PATH=$PATH:/Users/christoffer/tools/arm-eabi-4.4.3/bin
-#
+
 ################################################################################
 # Git settings
 ################################################################################
@@ -96,7 +96,6 @@ export GIT_COMMITTER_EMAIL="cdall@cs.columbia.edu"
 # Linux compilation settings 
 ################################################################################
 export ARCH=arm
-export CROSS_COMPILE=arm-eabi-
 export MENUCONFIG_COLOR=blackbg
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
@@ -133,3 +132,41 @@ function poser-droid() {
     source source-me.sh $@
     popd
 }
+
+################################################################################
+# Poser specific settings
+################################################################################
+
+export PATH=$PATH:~/bin
+export COLUMBIA_POSER_ROOT=/Users/christoffer/src/poser
+function poser-droid() {
+	export ANDROID_ROOT=$COLUMBIA_POSER_ROOT
+	export ANDROID_IMGS=$COLUMBIA_POSER_ROOT/imgs
+	export ANDROID_KERNEL_DIR=$COLUMBIA_POSER_ROOT/kernel
+	pushd $ANDROID_ROOT
+	source ./source-me.sh $@
+	popd
+}
+
+################################################################################
+# Directory-based environment config settings
+################################################################################
+
+function source_dir() {
+	envdir=$1
+	re_env_ignore="^\."
+	if [ -d "$envdir" ]; then
+		_T=$(ls "$envdir")
+		if [ ! -z "$_T" ]; then
+			for d in $(ls -1 "$envdir"); do
+				if [[ "$d" =~ $re_env_ignore ]]; then
+					echo "ignoring env setup file '$d'" > /dev/null
+				else
+					source "$envdir/$d"
+				fi
+			done
+		fi
+	fi
+}
+source_dir "$ZSH/env.d"
+>>>>>>> 087e95f90d9780e82c6c1ac0d0a23e48e5031279
