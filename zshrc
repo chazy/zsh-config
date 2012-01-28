@@ -126,6 +126,7 @@ function poser-droid() {
 	export ANDROID_ROOT=$COLUMBIA_POSER_ROOT
 	export ANDROID_IMGS=$COLUMBIA_POSER_ROOT/imgs
 	export ANDROID_KERNEL_DIR=$COLUMBIA_POSER_ROOT/kernel
+	export NO_AFLASH_REBOOT_CONF=1
 	pushd $ANDROID_ROOT
 	source ./source-me.sh $@
 	popd
