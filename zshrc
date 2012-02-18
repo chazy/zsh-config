@@ -129,9 +129,37 @@ function poser-droid() {
 	export ANDROID_KERNEL_DIR=$COLUMBIA_POSER_ROOT/kernel
 	export NO_AFLASH_REBOOT_CONF=1
 	pushd $ANDROID_ROOT
-	source ./source-me.sh $@
+	source ./source-me.sh full_crespo-eng
 	popd
 }
+
+
+################################################################################
+# Cells specific settings
+################################################################################
+
+function cells-host-droid() {
+	export COLUMBIA_CELLS_ROOT=/Users/christoffer/src/cells-host
+	export ANDROID_ROOT=$COLUMBIA_CELLS_ROOT
+	export ANDROID_IMGS=$COLUMBIA_CELLS_ROOT/imgs
+	export ANDROID_KERNEL_DIR=$COLUMBIA_CELLS_ROOT/kernel
+	export NO_AFLASH_REBOOT_CONF=1
+	pushd $ANDROID_ROOT
+	source ./source-me.sh cells_crespo-eng
+	popd
+}
+
+function cells-guest-droid() {
+	export COLUMBIA_CELLS_ROOT=/Users/christoffer/src/cells-guest
+	export ANDROID_ROOT=$COLUMBIA_CELLS_ROOT
+	export ANDROID_IMGS=$COLUMBIA_CELLS_ROOT/imgs
+	export ANDROID_KERNEL_DIR=$COLUMBIA_CELLS_ROOT/kernel
+	export NO_AFLASH_REBOOT_CONF=1
+	pushd $ANDROID_ROOT
+	source ./source-me.sh cells_crespo-eng
+	popd
+}
+
 
 ################################################################################
 # Directory-based environment config settings
