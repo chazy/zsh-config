@@ -77,6 +77,7 @@ if [[ -x `which hitch` ]]; then
 fi
 
 alias nogit="disable_git_prompt_info"
+compdef -d git
 
 PATH=~/bin/:~/node_modules/.bin/:$PATH
 export PATH=$PATH:/opt/local/bin:/usr/texbin
