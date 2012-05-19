@@ -169,4 +169,3 @@ function source_dir() {
 	fi
 }
 source_dir "$ZSH/env.d"
->>>>>>> 087e95f90d9780e82c6c1ac0d0a23e48e5031279
