@@ -106,8 +106,7 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 ################################################################################
 
 function kvmarm_env() {
-	export PATH=$PATH:~/x-tools/arm-unknown-eabi/bin
-	export CROSS_COMPILE=arm-unknown-eabi-
+	export CROSS_COMPILE=arm-linux-gnueabi-
 	export ARCH=arm
 
 	export GIT_AUTHOR_NAME="Christoffer Dall"
