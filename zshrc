@@ -78,6 +78,7 @@ fi
 
 alias nogit="disable_git_prompt_info"
 compdef -d git
+nogit
 
 PATH=~/bin/:~/node_modules/.bin/:$PATH
 export PATH=$PATH:/opt/local/bin:/usr/texbin
@@ -96,7 +97,6 @@ export GIT_COMMITTER_EMAIL="cdall@cs.columbia.edu"
 ################################################################################
 # Linux compilation settings 
 ################################################################################
-export ARCH=arm
 export MENUCONFIG_COLOR=blackbg
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
