@@ -83,7 +83,7 @@ nogit
 PATH=~/bin/:~/node_modules/.bin/:$PATH
 export PATH=$PATH:/opt/local/bin:/usr/texbin
 export PATH=$PATH:~/bin:~/scripts
-export PATH=$PATH:~/src/android-cont/android/prebuilt/darwin-x86/toolchain/arm-eabi-4.4.0/bin/
+export PATH=$PATH:~/tools/arm-eabi-4.4.3/bin/
 #
 ################################################################################
 # Git settings
