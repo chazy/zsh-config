@@ -144,7 +144,7 @@ function cells-host-droid() {
 	export ANDROID_KERNEL_DIR=$COLUMBIA_CELLS_ROOT/kernel
 	export NO_AFLASH_REBOOT_CONF=1
 	pushd $ANDROID_ROOT
-	source ./source-me.sh cells_crespo-eng
+	source ./source-me.sh cells_tuna-eng
 	popd
 }
 
@@ -155,7 +155,7 @@ function cells-guest-droid() {
 	export ANDROID_KERNEL_DIR=$COLUMBIA_CELLS_ROOT/kernel
 	export NO_AFLASH_REBOOT_CONF=1
 	pushd $ANDROID_ROOT
-	source ./source-me.sh cells_crespo-eng
+	source ./source-me.sh cells_maguro-eng
 	popd
 }
 
