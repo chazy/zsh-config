@@ -97,7 +97,6 @@ export GIT_COMMITTER_EMAIL="cdall@cs.columbia.edu"
 ################################################################################
 # Linux compilation settings 
 ################################################################################
-export ARCH=arm
 export MENUCONFIG_COLOR=blackbg
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
@@ -107,8 +106,7 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 ################################################################################
 
 function kvmarm_env() {
-	export PATH=$PATH:~/x-tools/arm-unknown-eabi/bin
-	export CROSS_COMPILE=arm-unknown-eabi-
+	export CROSS_COMPILE=arm-linux-gnueabi-
 	export ARCH=arm
 
 	export GIT_AUTHOR_NAME="Christoffer Dall"
@@ -146,7 +144,7 @@ function cells-host-droid() {
 	export ANDROID_KERNEL_DIR=$COLUMBIA_CELLS_ROOT/kernel
 	export NO_AFLASH_REBOOT_CONF=1
 	pushd $ANDROID_ROOT
-	source ./source-me.sh cells_crespo-eng
+	source ./source-me.sh cells_tuna-eng
 	popd
 }
 
@@ -157,7 +155,7 @@ function cells-guest-droid() {
 	export ANDROID_KERNEL_DIR=$COLUMBIA_CELLS_ROOT/kernel
 	export NO_AFLASH_REBOOT_CONF=1
 	pushd $ANDROID_ROOT
-	source ./source-me.sh cells_crespo-eng
+	source ./source-me.sh cells_maguro-eng
 	popd
 }
 
