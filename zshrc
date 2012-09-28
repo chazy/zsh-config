@@ -80,6 +80,8 @@ alias nogit="disable_git_prompt_info"
 compdef -d git
 nogit
 
+alias tmux="tmux -2"
+
 PATH=~/bin/:~/node_modules/.bin/:$PATH
 export PATH=$PATH:/opt/local/bin:/usr/texbin
 export PATH=$PATH:~/bin:~/scripts
