@@ -98,6 +98,7 @@ export GIT_COMMITTER_EMAIL="cdall@cs.columbia.edu"
 # Linux compilation settings 
 ################################################################################
 export MENUCONFIG_COLOR=blackbg
+export CCACHE_BASEDIR=/home/christoffer
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
