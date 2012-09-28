@@ -85,7 +85,7 @@ alias tmux="tmux -2"
 PATH=~/bin/:~/node_modules/.bin/:$PATH
 export PATH=$PATH:/opt/local/bin:/usr/texbin
 export PATH=$PATH:~/bin:~/scripts
-export PATH=$PATH:~/src/android-cont/android/prebuilt/darwin-x86/toolchain/arm-eabi-4.4.0/bin/
+export PATH=$PATH:~/tools/arm-eabi-4.4.3/bin/
 #
 ################################################################################
 # Git settings
@@ -147,7 +147,7 @@ function cells-host-droid() {
 	export ANDROID_KERNEL_DIR=$COLUMBIA_CELLS_ROOT/kernel
 	export NO_AFLASH_REBOOT_CONF=1
 	pushd $ANDROID_ROOT
-	source ./source-me.sh cells_crespo-eng
+	source ./source-me.sh cells_maguro-eng
 	popd
 }
 
@@ -158,7 +158,7 @@ function cells-guest-droid() {
 	export ANDROID_KERNEL_DIR=$COLUMBIA_CELLS_ROOT/kernel
 	export NO_AFLASH_REBOOT_CONF=1
 	pushd $ANDROID_ROOT
-	source ./source-me.sh cells_crespo-eng
+	source ./source-me.sh cells_maguro-eng
 	popd
 }
 
