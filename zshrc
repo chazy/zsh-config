@@ -86,6 +86,9 @@ PATH=~/bin/:~/node_modules/.bin/:$PATH
 export PATH=$PATH:/opt/local/bin:/usr/texbin
 export PATH=$PATH:~/bin:~/scripts
 export PATH=$PATH:~/tools/arm-eabi-4.4.3/bin/
+
+export LIBVIRT_DEFAULT_URI=qemu:///system
+
 #
 ################################################################################
 # Git settings
