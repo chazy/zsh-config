@@ -118,6 +118,12 @@ function kvmarm_env() {
 	export GIT_COMMITTER_EMAIL="c.dall@virtualopensystems.com"
 }
 
+function usbboot_env() {
+	export TOOLCHAIN=arm-linux-gnueabi-
+	export ARCH=omap5
+	export BOARD="omap5evm"
+}
+
 ################################################################################
 # Poser specific settings
 ################################################################################
