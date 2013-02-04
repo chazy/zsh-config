@@ -125,9 +125,9 @@ function kvmarm_env() {
 	export ARCH=arm
 
 	export GIT_AUTHOR_NAME="Christoffer Dall"
-	export GIT_AUTHOR_EMAIL="c.dall@virtualopensystems.com"
+	export GIT_AUTHOR_EMAIL="cdall@cs.columbia.edu"
 	export GIT_COMMITTER_NAME="Christoffer Dall"
-	export GIT_COMMITTER_EMAIL="c.dall@virtualopensystems.com"
+	export GIT_COMMITTER_EMAIL="cdall@cs.columbia.edu"
 }
 #
 ################################################################################
