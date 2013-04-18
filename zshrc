@@ -89,8 +89,7 @@ alias tmux="tmux -2"
 PATH=~/bin/:~/node_modules/.bin/:$PATH
 export PATH=$PATH:/opt/local/bin:/usr/texbin
 export PATH=$PATH:~/bin:~/scripts
-export PATH=$PATH:/Users/christoffer/tools/arm-eabi-4.4.3/bin
-export PATH=$PATH:~/tools/arm-eabi-4.4.3/bin/
+export PATH=$PATH:/home/christoffer/tools/ndk
 
 export LIBVIRT_DEFAULT_URI=qemu:///system
 
@@ -99,14 +98,16 @@ export LIBVIRT_DEFAULT_URI=qemu:///system
 ################################################################################
 export GIT_EDITOR=/usr/bin/vim
 export GIT_AUTHOR_NAME="Christoffer Dall"
-export GIT_AUTHOR_EMAIL="cdall@cs.columbia.edu"
+export GIT_AUTHOR_EMAIL="chris@cloudcar.com"
 export GIT_COMMITTER_NAME="Christoffer Dall"
-export GIT_COMMITTER_EMAIL="cdall@cs.columbia.edu"
+export GIT_COMMITTER_EMAIL="chris@cloudcar.com"
 
 ################################################################################
 # Linux compilation settings 
 ################################################################################
 export MENUCONFIG_COLOR=blackbg
+export USE_CCACHE=1
+export CCACHE_DIR=/home/christoffer/.ccache
 export CCACHE_BASEDIR=/home/christoffer
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
@@ -129,7 +130,19 @@ function kvmarm_env() {
 	export GIT_COMMITTER_NAME="Christoffer Dall"
 	export GIT_COMMITTER_EMAIL="cdall@cs.columbia.edu"
 }
-#
+
+function kvm_aarch64_env() {
+	kvmarm_env
+
+	export PATH=$PATH:~/tools/aarch64-toolchain/gcc-linaro-aarch64-linux-gnu-4.7+bzr115029-20121015+bzr2506_linux/bin
+	export CROSS_COMPILE=aarch64-linux-gnu-
+	export ARCH=arm64
+
+	export BOOTARGS_EXTRA='"root=/dev/vda2 rw console=ttyAMA0 earlyprintk"'
+	export FDT_SRC="vexpress-foundation-v8.dts"
+	export IMAGE="linux-system-foundation.axf"
+}
+
 ################################################################################
 # CloudCar Env
 ################################################################################
@@ -147,68 +160,12 @@ function cloudcar_env()
 	export GIT_AUTHOR_EMAIL="chris@cloudcar.com"
 	export GIT_COMMITTER_NAME="Christoffer Dall"
 	export GIT_COMMITTER_EMAIL="chris@cloudcar.com"
-}
 
-################################################################################
-# Poser Environment
-################################################################################
-export COLUMBIA_POSER_ROOT=$HOME/src/poser
-function poser-droid() {
-    export ANDROID_ROOT=$COLUMBIA_POSER_ROOT
-    export ANDROID_IMGS=$COLUMBIA_POSER_ROOT/imgs
-    export ANDROID_KERNEL_DIR=$COLUMBIA_POSER_ROOT/kernel
-    pushd $ANDROID_ROOT
-    source source-me.sh $@
-    popd
-}
-
-function usbboot_env() {
-	export TOOLCHAIN=arm-linux-gnueabi-
-	export ARCH=omap5
-	export BOARD="omap5evm"
-}
-
-################################################################################
-# Poser specific settings
-################################################################################
-
-export PATH=$PATH:~/bin
-export COLUMBIA_POSER_ROOT=/Users/christoffer/src/poser
-function poser-droid() {
-	export ANDROID_ROOT=$COLUMBIA_POSER_ROOT
-	export ANDROID_IMGS=$COLUMBIA_POSER_ROOT/imgs
-	export ANDROID_KERNEL_DIR=$COLUMBIA_POSER_ROOT/kernel
-	export NO_AFLASH_REBOOT_CONF=1
-	pushd $ANDROID_ROOT
-	source ./source-me.sh full_crespo-eng
-	popd
-}
-
-
-################################################################################
-# Cells specific settings
-################################################################################
-
-function cells-host-droid() {
-	export COLUMBIA_CELLS_ROOT=/Users/christoffer/src/cells-host
-	export ANDROID_ROOT=$COLUMBIA_CELLS_ROOT
-	export ANDROID_IMGS=$COLUMBIA_CELLS_ROOT/imgs
-	export ANDROID_KERNEL_DIR=$COLUMBIA_CELLS_ROOT/kernel
-	export NO_AFLASH_REBOOT_CONF=1
-	pushd $ANDROID_ROOT
-	source ./source-me.sh cells_maguro-eng
-	popd
-}
-
-function cells-guest-droid() {
-	export COLUMBIA_CELLS_ROOT=/Users/christoffer/src/cells-guest
-	export ANDROID_ROOT=$COLUMBIA_CELLS_ROOT
-	export ANDROID_IMGS=$COLUMBIA_CELLS_ROOT/imgs
-	export ANDROID_KERNEL_DIR=$COLUMBIA_CELLS_ROOT/kernel
-	export NO_AFLASH_REBOOT_CONF=1
-	pushd $ANDROID_ROOT
-	source ./source-me.sh cells_maguro-eng
-	popd
+	export CLOUDCAR_ROOT=/home/christoffer/src/cloudcar
+	export __ANDROID_HOME=/home/christoffer/src/cloudcar/android
+	export ANDROID_SDK_DIR=/home/christoffer/tools/sdk
+	export ANDROID_NDK_DIR=/home/christoffer/tools/ndk
+	alias ant="ant -Dndk.dir=$ANDROID_NDK_DIR -Dsdk.dir=$ANDROID_SDK_DIR -Dandroid.dir=$__ANDROID_HOME"
 }
 
 
