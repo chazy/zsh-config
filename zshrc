@@ -89,8 +89,7 @@ alias tmux="tmux -2"
 PATH=~/bin/:~/node_modules/.bin/:$PATH
 export PATH=$PATH:/opt/local/bin:/usr/texbin
 export PATH=$PATH:~/bin:~/scripts
-export PATH=$PATH:/Users/christoffer/tools/arm-eabi-4.4.3/bin
-export PATH=$PATH:~/tools/arm-eabi-4.4.3/bin/
+export PATH=$PATH:/home/christoffer/tools/ndk
 
 export LIBVIRT_DEFAULT_URI=qemu:///system
 
@@ -107,6 +106,8 @@ export GIT_COMMITTER_EMAIL="christoffer.dall@linaro.org"
 # Linux compilation settings 
 ################################################################################
 export MENUCONFIG_COLOR=blackbg
+export USE_CCACHE=1
+export CCACHE_DIR=/home/christoffer/.ccache
 export CCACHE_BASEDIR=/home/christoffer
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
@@ -129,6 +130,19 @@ function kvmarm_env() {
 	export GIT_COMMITTER_NAME="Christoffer Dall"
 	export GIT_COMMITTER_EMAIL="christoffer.dall@linaro.org"
 }
+
+function kvm_aarch64_env() {
+	kvmarm_env
+
+	export PATH=$PATH:~/tools/aarch64-toolchain/gcc-linaro-aarch64-linux-gnu-4.7+bzr115029-20121015+bzr2506_linux/bin
+	export CROSS_COMPILE=aarch64-linux-gnu-
+	export ARCH=arm64
+
+	export BOOTARGS_EXTRA='"root=/dev/vda2 rw console=ttyAMA0 earlyprintk"'
+	export FDT_SRC="vexpress-foundation-v8.dts"
+	export IMAGE="linux-system-foundation.axf"
+}
+
 
 ################################################################################
 # Directory-based environment config settings
