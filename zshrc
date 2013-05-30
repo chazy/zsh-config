@@ -99,9 +99,9 @@ export LIBVIRT_DEFAULT_URI=qemu:///system
 ################################################################################
 export GIT_EDITOR=/usr/bin/vim
 export GIT_AUTHOR_NAME="Christoffer Dall"
-export GIT_AUTHOR_EMAIL="cdall@cs.columbia.edu"
+export GIT_AUTHOR_EMAIL="christoffer.dall@linaro.org"
 export GIT_COMMITTER_NAME="Christoffer Dall"
-export GIT_COMMITTER_EMAIL="cdall@cs.columbia.edu"
+export GIT_COMMITTER_EMAIL="christoffer.dall@linaro.org"
 
 ################################################################################
 # Linux compilation settings 
@@ -125,92 +125,10 @@ function kvmarm_env() {
 	export ARCH=arm
 
 	export GIT_AUTHOR_NAME="Christoffer Dall"
-	export GIT_AUTHOR_EMAIL="cdall@cs.columbia.edu"
+	export GIT_AUTHOR_EMAIL="christoffer.dall@linaro.org"
 	export GIT_COMMITTER_NAME="Christoffer Dall"
-	export GIT_COMMITTER_EMAIL="cdall@cs.columbia.edu"
+	export GIT_COMMITTER_EMAIL="christoffer.dall@linaro.org"
 }
-#
-################################################################################
-# CloudCar Env
-################################################################################
-function cloudcar_env()
-{
-	export PATH=$PATH:~/x-tools/arm-unknown-eabi/bin
-	if [[ "`uname -s`" == "Linux" ]]; then
-		export CROSS_COMPILE=arm-linux-gnueabi-
-	else
-		export CROSS_COMPILE=arm-eabi-
-	fi
-	export ARCH=arm
-
-	export GIT_AUTHOR_NAME="Christoffer Dall"
-	export GIT_AUTHOR_EMAIL="chris@cloudcar.com"
-	export GIT_COMMITTER_NAME="Christoffer Dall"
-	export GIT_COMMITTER_EMAIL="chris@cloudcar.com"
-}
-
-################################################################################
-# Poser Environment
-################################################################################
-export COLUMBIA_POSER_ROOT=$HOME/src/poser
-function poser-droid() {
-    export ANDROID_ROOT=$COLUMBIA_POSER_ROOT
-    export ANDROID_IMGS=$COLUMBIA_POSER_ROOT/imgs
-    export ANDROID_KERNEL_DIR=$COLUMBIA_POSER_ROOT/kernel
-    pushd $ANDROID_ROOT
-    source source-me.sh $@
-    popd
-}
-
-function usbboot_env() {
-	export TOOLCHAIN=arm-linux-gnueabi-
-	export ARCH=omap5
-	export BOARD="omap5evm"
-}
-
-################################################################################
-# Poser specific settings
-################################################################################
-
-export PATH=$PATH:~/bin
-export COLUMBIA_POSER_ROOT=/Users/christoffer/src/poser
-function poser-droid() {
-	export ANDROID_ROOT=$COLUMBIA_POSER_ROOT
-	export ANDROID_IMGS=$COLUMBIA_POSER_ROOT/imgs
-	export ANDROID_KERNEL_DIR=$COLUMBIA_POSER_ROOT/kernel
-	export NO_AFLASH_REBOOT_CONF=1
-	pushd $ANDROID_ROOT
-	source ./source-me.sh full_crespo-eng
-	popd
-}
-
-
-################################################################################
-# Cells specific settings
-################################################################################
-
-function cells-host-droid() {
-	export COLUMBIA_CELLS_ROOT=/Users/christoffer/src/cells-host
-	export ANDROID_ROOT=$COLUMBIA_CELLS_ROOT
-	export ANDROID_IMGS=$COLUMBIA_CELLS_ROOT/imgs
-	export ANDROID_KERNEL_DIR=$COLUMBIA_CELLS_ROOT/kernel
-	export NO_AFLASH_REBOOT_CONF=1
-	pushd $ANDROID_ROOT
-	source ./source-me.sh cells_maguro-eng
-	popd
-}
-
-function cells-guest-droid() {
-	export COLUMBIA_CELLS_ROOT=/Users/christoffer/src/cells-guest
-	export ANDROID_ROOT=$COLUMBIA_CELLS_ROOT
-	export ANDROID_IMGS=$COLUMBIA_CELLS_ROOT/imgs
-	export ANDROID_KERNEL_DIR=$COLUMBIA_CELLS_ROOT/kernel
-	export NO_AFLASH_REBOOT_CONF=1
-	pushd $ANDROID_ROOT
-	source ./source-me.sh cells_maguro-eng
-	popd
-}
-
 
 ################################################################################
 # Directory-based environment config settings
