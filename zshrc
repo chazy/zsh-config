@@ -122,7 +122,7 @@ function mountSource()
 ################################################################################
 
 function kvmarm_env() {
-	export CROSS_COMPILE=arm-linux-gnueabi-
+	export CROSS_COMPILE=arm-linux-gnueabihf-
 	export ARCH=arm
 
 	export GIT_AUTHOR_NAME="Christoffer Dall"
@@ -134,11 +134,10 @@ function kvmarm_env() {
 function kvm_aarch64_env() {
 	kvmarm_env
 
-	export PATH=$PATH:~/tools/aarch64-toolchain/gcc-linaro-aarch64-linux-gnu-4.7+bzr115029-20121015+bzr2506_linux/bin
+	export PATH=$PATH:~/tools/aarch64-toolchain/bin
 	export CROSS_COMPILE=aarch64-linux-gnu-
 	export ARCH=arm64
 
-	export BOOTARGS_EXTRA='"root=/dev/vda2 rw console=ttyAMA0 earlyprintk"'
 	export FDT_SRC="vexpress-foundation-v8.dts"
 	export IMAGE="linux-system-foundation.axf"
 }
