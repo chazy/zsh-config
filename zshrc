@@ -113,9 +113,9 @@ transfer() { if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho tr
 ################################################################################
 export GIT_EDITOR=/usr/bin/vim
 export GIT_AUTHOR_NAME="Christoffer Dall"
-export GIT_AUTHOR_EMAIL="cdall@linaro.org"
+export GIT_AUTHOR_EMAIL="christoffer.dall@arm.com"
 export GIT_COMMITTER_NAME="Christoffer Dall"
-export GIT_COMMITTER_EMAIL="cdall@linaro.org"
+export GIT_COMMITTER_EMAIL="christoffer.dall@arm.com"
 
 ################################################################################
 # Linux compilation settings 
@@ -141,9 +141,9 @@ function kvmarm_env() {
 	export ARCH=arm
 
 	export GIT_AUTHOR_NAME="Christoffer Dall"
-	export GIT_AUTHOR_EMAIL="cdall@linaro.org"
+	export GIT_AUTHOR_EMAIL="christoffer.dall@arm.com"
 	export GIT_COMMITTER_NAME="Christoffer Dall"
-	export GIT_COMMITTER_EMAIL="cdall@linaro.org"
+	export GIT_COMMITTER_EMAIL="christoffer.dall@arm.com"
 }
 
 function kvm_aarch64_env() {
