@@ -109,15 +109,6 @@ transfer() { if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho tr
 	tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }; alias transfer=transfer
 
 ################################################################################
-# Git settings
-################################################################################
-export GIT_EDITOR=/usr/bin/vim
-export GIT_AUTHOR_NAME="Christoffer Dall"
-export GIT_AUTHOR_EMAIL="christoffer.dall@arm.com"
-export GIT_COMMITTER_NAME="Christoffer Dall"
-export GIT_COMMITTER_EMAIL="christoffer.dall@arm.com"
-
-################################################################################
 # Linux compilation settings 
 ################################################################################
 export MENUCONFIG_COLOR=blackbg
@@ -131,32 +122,6 @@ function mountSource()
 {
 	hdiutil attach -quiet -mountpoint ~/src ~/SourceCode.sparsebundle;
 }
-
-################################################################################
-# KVM/ARM environment
-################################################################################
-
-function kvmarm_env() {
-	export CROSS_COMPILE=arm-linux-gnueabihf-
-	export ARCH=arm
-
-	export GIT_AUTHOR_NAME="Christoffer Dall"
-	export GIT_AUTHOR_EMAIL="christoffer.dall@arm.com"
-	export GIT_COMMITTER_NAME="Christoffer Dall"
-	export GIT_COMMITTER_EMAIL="christoffer.dall@arm.com"
-}
-
-function kvm_aarch64_env() {
-	kvmarm_env
-
-	export PATH=$PATH:~/tools/aarch64-toolchain/bin
-	export CROSS_COMPILE=aarch64-linux-gnu-
-	export ARCH=arm64
-
-	export FDT_SRC="vexpress-foundation-v8.dts"
-	export IMAGE="linux-system-foundation.axf"
-}
-
 
 ################################################################################
 # Directory-based environment config settings
